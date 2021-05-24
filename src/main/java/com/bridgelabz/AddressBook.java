@@ -40,7 +40,7 @@ public class AddressBook {
         if(firstName.equals(contact.getFirstName())){
             return false;
         }
-        System.out.println("edit details:");
+        System.out.println("edit details you want to edit:");
         System.out.println("1 for  first name:");
         System.out.println("2 for  last name:");
         System.out.println("3 for ddress:");
