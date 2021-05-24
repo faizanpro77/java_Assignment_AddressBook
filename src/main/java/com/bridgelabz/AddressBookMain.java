@@ -7,5 +7,6 @@ public class AddressBookMain
         AddressBook addressBook = new AddressBook();
         addressBook.add();
         System.out.println(addressBook.edit());
+        addressBook.delete();
     }
 }

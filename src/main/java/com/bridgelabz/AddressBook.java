@@ -37,7 +37,7 @@ public class AddressBook {
     public boolean edit() {
         System.out.println("Enter first Name");
         String firstName = scanner.nextLine();
-        if(firstName.equals(contact.getFirstName())){
+        if (firstName.equals(contact.getFirstName())) {
             return false;
         }
         System.out.println("edit details:");
@@ -50,26 +50,41 @@ public class AddressBook {
         System.out.println("7 for phone number:");
         System.out.println("8 for email:");
         int choice = Integer.valueOf(scanner.next());
-        switch (choice){
-            case 1: contact.setFirstName(scanner.nextLine());
+        switch (choice) {
+            case 1:
+                contact.setFirstName(scanner.nextLine());
                 break;
-            case 2: contact.setLastName(scanner.nextLine());
+            case 2:
+                contact.setLastName(scanner.nextLine());
                 break;
-            case 3: contact.setAddress(scanner.nextLine());
+            case 3:
+                contact.setAddress(scanner.nextLine());
                 break;
-            case 4: contact.setCity(scanner.nextLine());
+            case 4:
+                contact.setCity(scanner.nextLine());
                 break;
-            case 5: contact.setState(scanner.nextLine());
+            case 5:
+                contact.setState(scanner.nextLine());
                 break;
-            case 6: contact.setZip(scanner.nextLine());
+            case 6:
+                contact.setZip(scanner.nextLine());
                 break;
-            case 7: contact.setPhoneNum(scanner.nextLine());
+            case 7:
+                contact.setPhoneNum(scanner.nextLine());
                 break;
-            case 8: contact.setEmail(scanner.nextLine());
+            case 8:
+                contact.setEmail(scanner.nextLine());
                 break;
         }
         return true;
     }
+        private void delete() {
+            System.out.println("Enter first Name to delete");
+            String firstName2 = scanner.nextLine();
+            if (contact != null && firstName2.equals(contact.getFirstName())) {
+                contact = null;
+            }
+        }
 }
 
 
