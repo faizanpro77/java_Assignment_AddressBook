@@ -6,5 +6,6 @@ public class AddressBookMain
         System.out.println("Welcome to Address Book Program");
         AddressBook addressBook = new AddressBook();
         addressBook.add();
+        System.out.println(addressBook.edit());
     }
 }

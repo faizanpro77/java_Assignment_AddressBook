@@ -33,5 +33,43 @@ public class AddressBook {
         contact.setZip(zip);
         contact.setPhoneNum(phoneNum);
         contact.setEmail(email);
+        }
+    public boolean edit() {
+        System.out.println("Enter first Name");
+        String firstName = scanner.nextLine();
+        if(firstName.equals(contact.getFirstName())){
+            return false;
+        }
+        System.out.println("edit details:");
+        System.out.println("1 for  first name:");
+        System.out.println("2 for  last name:");
+        System.out.println("3 for ddress:");
+        System.out.println("4 for city:");
+        System.out.println("5 for state:");
+        System.out.println("6 for  zip number:");
+        System.out.println("7 for phone number:");
+        System.out.println("8 for email:");
+        int choice = Integer.valueOf(scanner.next());
+        switch (choice){
+            case 1: contact.setFirstName(scanner.nextLine());
+                break;
+            case 2: contact.setLastName(scanner.nextLine());
+                break;
+            case 3: contact.setAddress(scanner.nextLine());
+                break;
+            case 4: contact.setCity(scanner.nextLine());
+                break;
+            case 5: contact.setState(scanner.nextLine());
+                break;
+            case 6: contact.setZip(scanner.nextLine());
+                break;
+            case 7: contact.setPhoneNum(scanner.nextLine());
+                break;
+            case 8: contact.setEmail(scanner.nextLine());
+                break;
+        }
+        return true;
     }
 }
+
+
