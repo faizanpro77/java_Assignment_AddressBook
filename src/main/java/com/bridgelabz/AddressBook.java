@@ -4,11 +4,10 @@ import java.util.Scanner;
 
 public class AddressBook {
 
-    Contact contact;
+    Contact contact =new Contact();
     Scanner scanner = new Scanner(System.in);
 
     public void add() {
-        contact = new Contact();
         System.out.println("Enter first name");
         String firstName = scanner.nextLine();
         System.out.println("Enter last name");
@@ -33,43 +32,52 @@ public class AddressBook {
         contact.setZip(zip);
         contact.setPhoneNum(phoneNum);
         contact.setEmail(email);
-        }
+    }
     public boolean edit() {
         System.out.println("Enter first Name");
-        String firstName = scanner.nextLine();
-        if(firstName.equals(contact.getFirstName())){
+        String firstName = scanner.next();
+        if (firstName.equals(contact.getFirstName())) {
             return false;
         }
-        System.out.println("edit details you want to edit:");
+        System.out.println("edit details:");
         System.out.println("1 for  first name:");
         System.out.println("2 for  last name:");
-        System.out.println("3 for ddress:");
+        System.out.println("3 for address:");
         System.out.println("4 for city:");
         System.out.println("5 for state:");
         System.out.println("6 for  zip number:");
         System.out.println("7 for phone number:");
         System.out.println("8 for email:");
         int choice = Integer.valueOf(scanner.next());
-        switch (choice){
-            case 1: contact.setFirstName(scanner.nextLine());
+        System.out.println("your choice for edit details : "+choice);
+        switch (choice) {
+            case 1:
+                contact.setFirstName(scanner.next());
                 break;
-            case 2: contact.setLastName(scanner.nextLine());
+            case 2:
+                contact.setLastName(scanner.next());
                 break;
-            case 3: contact.setAddress(scanner.nextLine());
+            case 3:
+                contact.setAddress(scanner.next());
                 break;
-            case 4: contact.setCity(scanner.nextLine());
+            case 4:
+                contact.setCity(scanner.next());
                 break;
-            case 5: contact.setState(scanner.nextLine());
+            case 5:
+                contact.setState(scanner.next());
                 break;
-            case 6: contact.setZip(scanner.nextLine());
+            case 6:
+                contact.setZip(scanner.next());
                 break;
-            case 7: contact.setPhoneNum(scanner.nextLine());
+            case 7:
+                contact.setPhoneNum(scanner.next());
                 break;
-            case 8: contact.setEmail(scanner.nextLine());
+            case 8:
+                contact.setEmail(scanner.next());
                 break;
+            default:
+                System.out.println("invalid number" );
         }
         return true;
     }
 }
-
-
