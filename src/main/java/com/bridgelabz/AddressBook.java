@@ -1,13 +1,17 @@
 package com.bridgelabz;
 
+import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.Scanner;
 
 public class AddressBook {
+   private LinkedList<Contact> addressBook = new LinkedList<>();
 
     Contact contact =new Contact();
     Scanner scanner = new Scanner(System.in);
 
     public void add() {
+        addressBook.add(contact);
         System.out.println("Enter first name");
         String firstName = scanner.nextLine();
         System.out.println("Enter last name");
