@@ -1,103 +1,125 @@
 package com.bridgelabz;
 
-import java.util.LinkedList;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
-public class AddressBook {
-   private LinkedList<Person> addressBook = new LinkedList<>();
-   
+public class Contacts {
 
-    Person person =new Person();
     Scanner scanner = new Scanner(System.in);
+    List<Person> personList = new ArrayList<Person>();
 
-    public void add() {
-        addressBook.add(person);
+    public void addDetails() {
+        String firstName, lastName, address, city, state, zip, phoneNum, email;
         System.out.println("Enter first name");
-        String firstName = scanner.nextLine();
+        firstName = scanner.nextLine();
         System.out.println("Enter last name");
-        String lastName = scanner.nextLine();
+        lastName = scanner.nextLine();
         System.out.println("Enter address");
-        String address = scanner.nextLine();
+        address = scanner.nextLine();
         System.out.println("Enter city");
-        String city = scanner.nextLine();
+        city = scanner.nextLine();
         System.out.println("Enter state");
-        String state = scanner.nextLine();
+        state = scanner.nextLine();
         System.out.println("Enter zip number");
-        String zip = scanner.nextLine();
+        zip = scanner.nextLine();
         System.out.println("Enter phone number");
-        String phoneNum = scanner.nextLine();
+        phoneNum = scanner.nextLine();
         System.out.println("Enter email");
-        String email = scanner.nextLine();
-        person.setFirstName(firstName);
-        person.setLastName(lastName);
-        person.setAddress(address);
-        person.setCity(city);
-        person.setState(state);
-        person.setZip(zip);
-        person.setPhoneNum(phoneNum);
-        person.setEmail(email);
-        }
-    public boolean edit() {
-        System.out.println("Enter first Name");
-        String firstName = scanner.next();
-        if (firstName.equals(person.getFirstName())) {
-            return false;
-        }
-        System.out.println("edit details:");
-        System.out.println("1 for  first name:");
-        System.out.println("2 for  last name:");
-        System.out.println("3 for address:");
-        System.out.println("4 for city:");
-        System.out.println("5 for state:");
-        System.out.println("6 for  zip number:");
-        System.out.println("7 for phone number:");
-        System.out.println("8 for email:");
-        int choice = Integer.valueOf(scanner.next());
-        System.out.println("your choice for edit details : "+choice);
-        switch (choice) {
-            case 1:
-                person.setFirstName(scanner.next());
-                break;
-            case 2:
-                person.setLastName(scanner.next());
-                break;
-            case 3:
-                person.setAddress(scanner.next());
-                break;
-            case 4:
-                person.setCity(scanner.next());
-                break;
-            case 5:
-                person.setState(scanner.next());
-                break;
-            case 6:
-                person.setZip(scanner.next());
-                break;
-            case 7:
-                person.setPhoneNum(scanner.next());
-                break;
-            case 8:
-                person.setEmail(scanner.next());
-                break;
-            default:
-                System.out.println("invalid number" );
-        }
-        return true;
+        email = scanner.nextLine();
+        personList.add(new Person(firstName, lastName, address, city, state, zip, phoneNum, email));
     }
-        public void delete() {
-            System.out.println("press 1 for delete");
-            System.out.println("press 2 exit");
-            int choice1 = Integer.valueOf(scanner.next());
-            switch (choice1) {
+
+    public void displayDetails() {
+        if(personList.isEmpty()) {
+            System.out.println("No records");
+        } else {
+            for(Person person : personList) {
+                System.out.println(person);
+            }
+        }
+    }
+    public void editDetails() {
+        int id, choice = 0, i = 0;
+        String firstName, lastName, address, city, state, zip, phoneNum, email;
+        for (Person person : personList) {
+            System.out.println("ID:#" + personList.indexOf(person) + " : " + person);
+        }
+        System.out.println("Enter #ID to edit contact : ");
+        id = Integer.valueOf(scanner.next());
+        System.out.println(personList.get(id));
+        while (i == 0) {
+            System.out.println("Enter #ID to edit contact details:");
+            System.out.println("1 for  first name:");
+            System.out.println("2 for  last name:");
+            System.out.println("3 for address:");
+            System.out.println("4 for city:");
+            System.out.println("5 for state:");
+            System.out.println("6 for  zip number:");
+            System.out.println("7 for phone number:");
+            System.out.println("8 for email:");
+            System.out.println("9 for save and exit:");
+
+            choice = Integer.valueOf(scanner.next());
+            System.out.println("your choice for edit details : " + choice);
+            switch (choice) {
                 case 1:
-                    System.out.println("Enter first Name to delete");
-                    String firstName2 = scanner.next();
-                    if (person != null && firstName2.equals(person.getFirstName())) {
-                        person = null;
-                    }
+                    System.out.print("Enter new firstname : ");
+                    firstName = String.valueOf(scanner.next());
+                    personList.get(id).setFirstName(firstName);
                     break;
                 case 2:
+                    System.out.print("Enter new lastname : ");
+                    lastName = String.valueOf(scanner.next());
+                    personList.get(id).setLastName(lastName);
                     break;
+                case 3:
+                    System.out.print("Enter new address : ");
+                    address = String.valueOf(scanner.next());
+                    personList.get(id).setAddress(address);
+                    break;
+                case 4:
+                    System.out.print("Enter new city : ");
+                    city = String.valueOf(scanner.next());
+                    personList.get(id).setCity(city);
+                    break;
+                case 5:
+                    System.out.print("Enter new state : ");
+                    state = String.valueOf(scanner.next());
+                    personList.get(id).setState(state);
+                    break;
+                case 6:
+                    System.out.print("Enter new zip : ");
+                    zip = String.valueOf(scanner.next());
+                    personList.get(id).setZip(zip);
+                    break;
+                case 7:
+                    System.out.print("Enter new phoneNum : ");
+                    phoneNum = String.valueOf(scanner.next());
+                    personList.get(id).setPhoneNum(phoneNum);
+                    break;
+                case 8:
+                    System.out.print("Enter new email : ");
+                    email = String.valueOf(scanner.next());
+                    personList.get(id).setEmail(email);
+                    break;
+                case 9:
+                    i=1;
+                    break;
+                default:
+                    System.out.println("select valid option");
+                    break;
+            }
+            System.out.println(personList.get(id));
+        }
+    }
+        public void deleteDetails() {
+            int id;
+            for (Person p : personList) {
+                System.out.println("ID: #"+personList.indexOf(p) + " : " + p);
+                System.out.println("\nEnter #ID to delete contact : ");
+                id = Integer.valueOf(scanner.next());
+                personList.remove(id);
             }
         }
 }
