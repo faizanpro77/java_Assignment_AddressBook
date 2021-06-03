@@ -1,17 +1,17 @@
 package com.bridgelabz;
 
-import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.Scanner;
 
 public class AddressBook {
-   private LinkedList<Contact> addressBook = new LinkedList<>();
+   private LinkedList<Person> addressBook = new LinkedList<>();
+   
 
-    Contact contact =new Contact();
+    Person person =new Person();
     Scanner scanner = new Scanner(System.in);
 
     public void add() {
-        addressBook.add(contact);
+        addressBook.add(person);
         System.out.println("Enter first name");
         String firstName = scanner.nextLine();
         System.out.println("Enter last name");
@@ -28,19 +28,19 @@ public class AddressBook {
         String phoneNum = scanner.nextLine();
         System.out.println("Enter email");
         String email = scanner.nextLine();
-        contact.setFirstName(firstName);
-        contact.setLastName(lastName);
-        contact.setAddress(address);
-        contact.setCity(city);
-        contact.setState(state);
-        contact.setZip(zip);
-        contact.setPhoneNum(phoneNum);
-        contact.setEmail(email);
+        person.setFirstName(firstName);
+        person.setLastName(lastName);
+        person.setAddress(address);
+        person.setCity(city);
+        person.setState(state);
+        person.setZip(zip);
+        person.setPhoneNum(phoneNum);
+        person.setEmail(email);
         }
     public boolean edit() {
         System.out.println("Enter first Name");
         String firstName = scanner.next();
-        if (firstName.equals(contact.getFirstName())) {
+        if (firstName.equals(person.getFirstName())) {
             return false;
         }
         System.out.println("edit details:");
@@ -56,28 +56,28 @@ public class AddressBook {
         System.out.println("your choice for edit details : "+choice);
         switch (choice) {
             case 1:
-                contact.setFirstName(scanner.next());
+                person.setFirstName(scanner.next());
                 break;
             case 2:
-                contact.setLastName(scanner.next());
+                person.setLastName(scanner.next());
                 break;
             case 3:
-                contact.setAddress(scanner.next());
+                person.setAddress(scanner.next());
                 break;
             case 4:
-                contact.setCity(scanner.next());
+                person.setCity(scanner.next());
                 break;
             case 5:
-                contact.setState(scanner.next());
+                person.setState(scanner.next());
                 break;
             case 6:
-                contact.setZip(scanner.next());
+                person.setZip(scanner.next());
                 break;
             case 7:
-                contact.setPhoneNum(scanner.next());
+                person.setPhoneNum(scanner.next());
                 break;
             case 8:
-                contact.setEmail(scanner.next());
+                person.setEmail(scanner.next());
                 break;
             default:
                 System.out.println("invalid number" );
@@ -92,8 +92,8 @@ public class AddressBook {
                 case 1:
                     System.out.println("Enter first Name to delete");
                     String firstName2 = scanner.next();
-                    if (contact != null && firstName2.equals(contact.getFirstName())) {
-                        contact = null;
+                    if (person != null && firstName2.equals(person.getFirstName())) {
+                        person = null;
                     }
                     break;
                 case 2:
