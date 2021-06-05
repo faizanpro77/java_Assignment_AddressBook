@@ -10,9 +10,21 @@ public class Contacts {
     List<Person> personList = new ArrayList<Person>();
 
     public void addDetails() {
-        String firstName, lastName, address, city, state, zip, phoneNum, email;
+        String firstName = null, lastName, address, city, state, zip, phoneNum, email;
+        int i = 0;
+        while (i == 0) {
+            System.out.println("Enter First Name : ");
+            firstName = String.valueOf(scanner.next());
+            if (checkExist(firstName)) {
+                System.out.println("Person name is already exist");
+                break;
+            }
+            else {
+                i=1;
+            }
+        }
         System.out.println("Enter first name");
-        firstName = scanner.nextLine();
+        firstName = scanner.next();
         System.out.println("Enter last name");
         lastName = scanner.nextLine();
         System.out.println("Enter address");
@@ -29,7 +41,6 @@ public class Contacts {
         email = scanner.nextLine();
         personList.add(new Person(firstName, lastName, address, city, state, zip, phoneNum, email));
     }
-
     public void displayDetails() {
         if(personList.isEmpty()) {
             System.out.println("No records");
@@ -39,6 +50,7 @@ public class Contacts {
             }
         }
     }
+
     public void editDetails() {
         int id, choice = 0, i = 0;
         String firstName, lastName, address, city, state, zip, phoneNum, email;
@@ -122,6 +134,20 @@ public class Contacts {
                 personList.remove(id);
             }
         }
+
+        public boolean checkExist(String firstName) {
+        int flag = 0;
+        for(Person p : personList) {
+            if (p.getFirstName().equals(firstName)) {
+                flag = 1;
+                break;
+            }
+        }
+            if (flag == 1) {
+                return true;
+            }
+            return false;
+    }
 }
 
 
