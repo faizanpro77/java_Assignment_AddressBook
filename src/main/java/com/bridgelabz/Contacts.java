@@ -3,12 +3,14 @@ package com.bridgelabz;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
+import java.util.stream.Collectors;
 
 public class Contacts {
 
     Scanner scanner = new Scanner(System.in);
     List<Person> personList = new ArrayList<Person>();
-
+//*********************************************************
+//*************************************************************
     public void addDetails() {
         String firstName = null, lastName, address, city, state, zip, phoneNum, email;
         int i = 0;
@@ -26,19 +28,19 @@ public class Contacts {
         System.out.println("Enter first name");
         firstName = scanner.next();
         System.out.println("Enter last name");
-        lastName = scanner.nextLine();
+        lastName = scanner.next();
         System.out.println("Enter address");
-        address = scanner.nextLine();
+        address = scanner.next();
         System.out.println("Enter city");
-        city = scanner.nextLine();
+        city = scanner.next();
         System.out.println("Enter state");
-        state = scanner.nextLine();
+        state = scanner.next();
         System.out.println("Enter zip number");
-        zip = scanner.nextLine();
+        zip = scanner.next();
         System.out.println("Enter phone number");
-        phoneNum = scanner.nextLine();
+        phoneNum = scanner.next();
         System.out.println("Enter email");
-        email = scanner.nextLine();
+        email = scanner.next();
         personList.add(new Person(firstName, lastName, address, city, state, zip, phoneNum, email));
     }
     public void displayDetails() {
@@ -135,7 +137,13 @@ public class Contacts {
             }
         }
 
-        public boolean checkExist(String firstName) {
+    public void sortDetails()
+    {
+        Sort.sortByName(personList);
+    }
+
+
+    public boolean checkExist(String firstName) {
         int flag = 0;
         for(Person p : personList) {
             if (p.getFirstName().equals(firstName)) {

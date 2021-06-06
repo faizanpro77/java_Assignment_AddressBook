@@ -15,7 +15,8 @@ public class AddressBookMain {
             System.out.println("2 : Display Details");
             System.out.println("3 : Edit person detail");
             System.out.println("4 : delete person");
-            System.out.println("5 : Exit");
+            System.out.println("5 : sort by name");
+            System.out.println("6 : Exit");
 
             choice = scanner.nextInt();
             switch (choice) {
@@ -31,6 +32,8 @@ public class AddressBookMain {
                 case 4:
                     contacts.deleteDetails();
                 case 5:
+                    contacts.sortDetails();
+                case 6:
                     i = -1;
                     break;
                 default:
