@@ -15,7 +15,7 @@ public class AddressBookMain {
             System.out.println("2 : Display Details");
             System.out.println("3 : Edit person detail");
             System.out.println("4 : delete person");
-            System.out.println("5 : sort by name");
+            System.out.println("5 : Sort By name");
             System.out.println("6 : Exit");
 
             choice = scanner.nextInt();
