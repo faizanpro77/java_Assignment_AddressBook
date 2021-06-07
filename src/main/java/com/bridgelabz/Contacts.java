@@ -1,8 +1,6 @@
 package com.bridgelabz;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class Contacts {
@@ -152,18 +150,44 @@ public class Contacts {
     }
     //Search by name
     public void searchByName(String firstName) {
-        List<Person> streamList = personList.stream().filter(person1 -> firstName.equals(person1.getFirstName())).collect(Collectors.toList());
+        List<Person> streamList = personList.stream().filter(person -> firstName.equals(person.getFirstName())).collect(Collectors.toList());
         System.out.println("Persons details : " + streamList);
     }
     //Search by searchByCity
     public void searchByCity(String city) {
-        List<Person> streamList = personList.stream().filter(person1 -> city.equals(person1.getCity())).collect(Collectors.toList());
+        List<Person> streamList = personList.stream().filter(person -> city.equals(person.getCity())).collect(Collectors.toList());
         System.out.println("Persons in city : " + streamList);
     }
     //Search by searchByState
     public void searchByState(String state) {
-        List<Person> streamList = personList.stream().filter(person1 -> state.equals(person1.getState())).collect(Collectors.toList());
+        List<Person> streamList = personList.stream().filter(person -> state.equals(person.getState())).collect(Collectors.toList());
         System.out.println("Person in state : "+streamList);
+    }
+
+    public void viewByCity(String city1) {
+        List<Person> streamList=personList.stream().filter(person -> city1.equals(person.getCity())).collect(Collectors.toList());
+        System.out.println("person in city : "+streamList);
+        Dictionary cityDetails = new Hashtable();
+        for (Person person : personList)
+        {
+            if(city1.equals(person.getCity()))
+            {
+                cityDetails.put(person.getFirstName(), city1);
+            }
+        }
+        System.out.println("Address book contact details : " + cityDetails);
+    }
+
+    public void viewByState(String state1) {
+        List<Person> streamList = personList.stream().filter(person -> state1.equals(person.getState())).collect(Collectors.toList());
+        System.out.println("Person in state : " + streamList);
+        Dictionary stateDetails = new Hashtable();
+        for (Person person : personList) {
+            if (state1.equals(person.getState())) {
+                stateDetails.put(person.getFirstName(), state1);
+            }
+        }
+        System.out.println("Address book contact details : " + stateDetails);
     }
 }
 

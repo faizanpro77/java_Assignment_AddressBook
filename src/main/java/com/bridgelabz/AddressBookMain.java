@@ -18,7 +18,9 @@ public class AddressBookMain {
             System.out.println("5 : search by name");
             System.out.println("6 : search by city");
             System.out.println("7 : search by state");
-            System.out.println("8 : Exit");
+            System.out.println("8 : view by city");
+            System.out.println("9 : view by state");
+            System.out.println("10 : Exit");
 
             choice = scanner.nextInt();
             switch (choice) {
@@ -43,6 +45,12 @@ public class AddressBookMain {
                     String State = scanner.next();
                     contacts.searchByState(State);
                 case 8:
+                    String city1 = scanner.next();
+                    contacts.viewByCity(city1);
+                case 9:
+                    String state1 = scanner.next();
+                    contacts.viewByState(state1);
+                case 10:
                     i = -1;
                     break;
                 default:
