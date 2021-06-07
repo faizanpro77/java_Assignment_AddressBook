@@ -1,9 +1,6 @@
+com/bridgelabz/Person.java
+ com.bridgelabz.Person
 com/bridgelabz/Contacts.java
  com.bridgelabz.Contacts
 com/bridgelabz/AddressBookMain.java
  com.bridgelabz.AddressBookMain
-com/bridgelabz/Sort.java
- com.bridgelabz.Sort
-com/bridgelabz/Person.java
- com.bridgelabz.Person
- com.bridgelabz.Person$1

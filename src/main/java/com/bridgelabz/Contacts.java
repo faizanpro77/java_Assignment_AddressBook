@@ -9,8 +9,7 @@ public class Contacts {
 
     Scanner scanner = new Scanner(System.in);
     List<Person> personList = new ArrayList<Person>();
-//*********************************************************
-//*************************************************************
+
     public void addDetails() {
         String firstName = null, lastName, address, city, state, zip, phoneNum, email;
         int i = 0;
@@ -43,6 +42,7 @@ public class Contacts {
         email = scanner.next();
         personList.add(new Person(firstName, lastName, address, city, state, zip, phoneNum, email));
     }
+
     public void displayDetails() {
         if(personList.isEmpty()) {
             System.out.println("No records");
@@ -137,12 +137,6 @@ public class Contacts {
             }
         }
 
-    public void sortDetails()
-    {
-        Sort.sortByName(personList);
-    }
-
-
     public boolean checkExist(String firstName) {
         int flag = 0;
         for(Person p : personList) {
@@ -155,6 +149,21 @@ public class Contacts {
                 return true;
             }
             return false;
+    }
+    //Search by name
+    public void searchByName(String firstName) {
+        List<Person> streamList = personList.stream().filter(person1 -> firstName.equals(person1.getFirstName())).collect(Collectors.toList());
+        System.out.println("Persons details : " + streamList);
+    }
+    //Search by searchByCity
+    public void searchByCity(String city) {
+        List<Person> streamList = personList.stream().filter(person1 -> city.equals(person1.getCity())).collect(Collectors.toList());
+        System.out.println("Persons in city : " + streamList);
+    }
+    //Search by searchByState
+    public void searchByState(String state) {
+        List<Person> streamList = personList.stream().filter(person1 -> state.equals(person1.getState())).collect(Collectors.toList());
+        System.out.println("Person in state : "+streamList);
     }
 }
 

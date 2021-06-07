@@ -15,8 +15,10 @@ public class AddressBookMain {
             System.out.println("2 : Display Details");
             System.out.println("3 : Edit person detail");
             System.out.println("4 : delete person");
-            System.out.println("5 : Sort By name");
-            System.out.println("6 : Exit");
+            System.out.println("5 : search by name");
+            System.out.println("6 : search by city");
+            System.out.println("7 : search by state");
+            System.out.println("8 : Exit");
 
             choice = scanner.nextInt();
             switch (choice) {
@@ -32,8 +34,15 @@ public class AddressBookMain {
                 case 4:
                     contacts.deleteDetails();
                 case 5:
-                    contacts.sortDetails();
+                    String firstName = scanner.next();
+                    contacts.searchByName(firstName);
                 case 6:
+                    String city = scanner.next();
+                    contacts.searchByCity(city);
+                case 7:
+                    String State = scanner.next();
+                    contacts.searchByState(State);
+                case 8:
                     i = -1;
                     break;
                 default:

@@ -87,16 +87,6 @@ public class Person {
     public void setEmail(String email) {
         this.email = email;
     }
-
-    public static Comparator<Person>firstNameSorting = new Comparator<Person>() {
-        @Override
-        public int compare(Person p1, Person p2) {
-            String firstName1 = p1.getFirstName();
-            String firstName2= p2.getFirstName();
-            return firstName1.compareTo(firstName2);
-        }
-    };
-
     @Override
     public String toString() {
         return "Contact{" +
