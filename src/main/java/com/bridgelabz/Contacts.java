@@ -200,6 +200,11 @@ public class Contacts {
         int count = (int) personList.stream().filter(person -> state2.equals(person.getState())).count();
         System.out.println("Total person count in " + state2 + " City is " + count );
     }
+
+    public void sortByName() {
+        List<Person> sortedName = personList.stream().sorted((s1,s2) -> s1.getFirstName().compareToIgnoreCase(s1.getFirstName())).collect(Collectors.toList());
+        System.out.println("Sorted person alphabetically : " + sortedName );
+    }
 }
 
 
