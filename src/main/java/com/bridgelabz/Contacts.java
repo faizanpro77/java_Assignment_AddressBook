@@ -17,9 +17,8 @@ public class Contacts {
             if (checkExist(firstName)) {
                 System.out.println("Person name is already exist");
                 break;
-            }
-            else {
-                i=1;
+            } else {
+                i = 1;
             }
         }
         System.out.println("Enter first name");
@@ -42,10 +41,10 @@ public class Contacts {
     }
 
     public void displayDetails() {
-        if(personList.isEmpty()) {
+        if (personList.isEmpty()) {
             System.out.println("No records");
         } else {
-            for(Person person : personList) {
+            for (Person person : personList) {
                 System.out.println(person);
             }
         }
@@ -116,7 +115,7 @@ public class Contacts {
                     personList.get(id).setEmail(email);
                     break;
                 case 9:
-                    i=1;
+                    i = 1;
                     break;
                 default:
                     System.out.println("select valid option");
@@ -125,53 +124,55 @@ public class Contacts {
             System.out.println(personList.get(id));
         }
     }
-        public void deleteDetails() {
-            int id;
-            for (Person p : personList) {
-                System.out.println("ID: #"+personList.indexOf(p) + " : " + p);
-                System.out.println("\nEnter #ID to delete contact : ");
-                id = Integer.valueOf(scanner.next());
-                personList.remove(id);
-            }
+
+    public void deleteDetails() {
+        int id;
+        for (Person p : personList) {
+            System.out.println("ID: #" + personList.indexOf(p) + " : " + p);
+            System.out.println("\nEnter #ID to delete contact : ");
+            id = Integer.valueOf(scanner.next());
+            personList.remove(id);
         }
+    }
 
     public boolean checkExist(String firstName) {
         int flag = 0;
-        for(Person p : personList) {
+        for (Person p : personList) {
             if (p.getFirstName().equals(firstName)) {
                 flag = 1;
                 break;
             }
         }
-            if (flag == 1) {
-                return true;
-            }
-            return false;
+        if (flag == 1) {
+            return true;
+        }
+        return false;
     }
+
     //Search by name
     public void searchByName(String firstName) {
         List<Person> streamList = personList.stream().filter(person -> firstName.equals(person.getFirstName())).collect(Collectors.toList());
         System.out.println("Persons details : " + streamList);
     }
+
     //Search by searchByCity
     public void searchByCity(String city) {
         List<Person> streamList = personList.stream().filter(person -> city.equals(person.getCity())).collect(Collectors.toList());
         System.out.println("Persons in city : " + streamList);
     }
+
     //Search by searchByState
     public void searchByState(String state) {
         List<Person> streamList = personList.stream().filter(person -> state.equals(person.getState())).collect(Collectors.toList());
-        System.out.println("Person in state : "+streamList);
+        System.out.println("Person in state : " + streamList);
     }
 
     public void viewByCity(String city1) {
-        List<Person> streamList=personList.stream().filter(person -> city1.equals(person.getCity())).collect(Collectors.toList());
-        System.out.println("person in city : "+streamList);
+        List<Person> streamList = personList.stream().filter(person -> city1.equals(person.getCity())).collect(Collectors.toList());
+        System.out.println("person in city : " + streamList);
         Dictionary cityDetails = new Hashtable();
-        for (Person person : personList)
-        {
-            if(city1.equals(person.getCity()))
-            {
+        for (Person person : personList) {
+            if (city1.equals(person.getCity())) {
                 cityDetails.put(person.getFirstName(), city1);
             }
         }
@@ -188,6 +189,16 @@ public class Contacts {
             }
         }
         System.out.println("Address book contact details : " + stateDetails);
+    }
+
+    public void personCountByCity(String city2) {
+        int count = (int) personList.stream().filter(person -> city2.equals(person.getCity())).count();
+        System.out.println("Total person count in " + city2 + " City is " + count);
+    }
+
+    public void  personCountByState(String state2) {
+        int count = (int) personList.stream().filter(person -> state2.equals(person.getState())).count();
+        System.out.println("Total person count in " + state2 + " City is " + count );
     }
 }
 

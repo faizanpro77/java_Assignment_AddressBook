@@ -20,7 +20,9 @@ public class AddressBookMain {
             System.out.println("7 : search by state");
             System.out.println("8 : view by city");
             System.out.println("9 : view by state");
-            System.out.println("10 : Exit");
+            System.out.println("10 : person Count By City");
+            System.out.println("11 :person Count By state");
+            System.out.println("12 : Exit");
 
             choice = scanner.nextInt();
             switch (choice) {
@@ -51,6 +53,12 @@ public class AddressBookMain {
                     String state1 = scanner.next();
                     contacts.viewByState(state1);
                 case 10:
+                    String city2 = scanner.next();
+                    contacts.personCountByCity(city2);
+                case 11:
+                    String state2 = scanner.next();
+                    contacts.personCountByState(state2);
+                case 12:
                     i = -1;
                     break;
                 default:
