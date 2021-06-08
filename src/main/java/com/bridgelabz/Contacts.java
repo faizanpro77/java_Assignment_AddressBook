@@ -54,13 +54,13 @@ public class Contacts {
         int id, choice = 0, i = 0;
         String firstName, lastName, address, city, state, zip, phoneNum, email;
         for (Person person : personList) {
-            System.out.println("ID:#" + personList.indexOf(person) + " : " + person);
+            System.out.println("ID : " + personList.indexOf(person) + " : " + person);
         }
         System.out.println("Enter #ID to edit contact : ");
         id = Integer.valueOf(scanner.next());
         System.out.println(personList.get(id));
         while (i == 0) {
-            System.out.println("Enter #ID to edit contact details:");
+            System.out.println("select option  to edit contact details:");
             System.out.println("1 for  first name:");
             System.out.println("2 for  last name:");
             System.out.println("3 for address:");
@@ -201,9 +201,21 @@ public class Contacts {
         System.out.println("Total person count in " + state2 + " City is " + count );
     }
 
-    public void sortByName() {
-        List<Person> sortedName = personList.stream().sorted((s1,s2) -> s1.getFirstName().compareToIgnoreCase(s1.getFirstName())).collect(Collectors.toList());
-        System.out.println("Sorted person alphabetically : " + sortedName );
+    public void sortDetails() {
+        System.out.println("1 : sort alphabetically By Name");
+        System.out.println("2 : sort by city");
+
+        int choice = scanner.nextInt();
+        switch (choice) {
+            case 1:
+                Sort.sortByName(personList);
+                break;
+            case 2:
+                Sort.sortByCity(personList);
+                break;
+            default:
+                System.out.println("select valid option");
+        }
     }
 }
 

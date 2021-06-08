@@ -22,7 +22,7 @@ public class AddressBookMain {
             System.out.println("9 : view by state");
             System.out.println("10 : person Count By City");
             System.out.println("11 :person Count By state");
-            System.out.println("12 : sort alphabetically By Name");
+            System.out.println("12 : Sort Details");
             System.out.println("13 : Exit");
 
             choice = scanner.nextInt();
@@ -41,31 +41,39 @@ public class AddressBookMain {
                 case 5:
                     String firstName = scanner.next();
                     contacts.searchByName(firstName);
+                    break;
                 case 6:
                     String city = scanner.next();
                     contacts.searchByCity(city);
+                    break;
                 case 7:
                     String State = scanner.next();
                     contacts.searchByState(State);
+                    break;
                 case 8:
                     String city1 = scanner.next();
                     contacts.viewByCity(city1);
+                    break;
                 case 9:
                     String state1 = scanner.next();
                     contacts.viewByState(state1);
+                    break;
                 case 10:
                     String city2 = scanner.next();
                     contacts.personCountByCity(city2);
+                    break;
                 case 11:
                     String state2 = scanner.next();
                     contacts.personCountByState(state2);
-                case 13:
-                    contacts.sortByName();
+                    break;
                 case 12:
+                    contacts.sortDetails();
+                    break;
+                case 13:
                     i = -1;
                     break;
                 default:
-                    System.out.println("Please enter valid scanner");
+                    System.out.println("Please select valid option");
             }
         }
     }

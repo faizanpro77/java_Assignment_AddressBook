@@ -87,6 +87,22 @@ public class Person {
     public void setEmail(String email) {
         this.email = email;
     }
+
+    public static Comparator<Person>firstNameSorting = (p1, p2) -> {
+        String firstName1 = p1.getFirstName();
+        String firstName2= p2.getFirstName();
+        return firstName1.compareToIgnoreCase(firstName2);
+    };
+
+    public static  Comparator<Person>citySorting = new Comparator<Person>() {
+        @Override
+        public int compare(Person o1, Person o2) {
+            String city1 = o1.getCity();
+            String city2 = o2.getCity();
+            return city1.compareToIgnoreCase(city2);
+        }
+    };
+
     @Override
     public String toString() {
         return "Contact{" +
