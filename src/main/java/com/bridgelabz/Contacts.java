@@ -51,14 +51,8 @@ public class Contacts {
     }
 
     public void editDetails() {
-        int id, choice = 0, i = 0;
-        String firstName, lastName, address, city, state, zip, phoneNum, email;
-        for (Person person : personList) {
-            System.out.println("ID : " + personList.indexOf(person) + " : " + person);
-        }
-        System.out.println("Enter #ID to edit contact : ");
-        id = Integer.valueOf(scanner.next());
-        System.out.println(personList.get(id));
+
+        int choice = 0, i = 0;
         while (i == 0) {
             System.out.println("select option  to edit contact details:");
             System.out.println("1 for  first name:");
@@ -71,49 +65,84 @@ public class Contacts {
             System.out.println("8 for email:");
             System.out.println("9 for save and exit:");
 
+            List<Person> personList;
             choice = Integer.valueOf(scanner.next());
             System.out.println("your choice for edit details : " + choice);
             switch (choice) {
                 case 1:
-                    System.out.print("Enter new firstname : ");
+                    System.out.print("Enter old first name : ");
+                    String firstName = String.valueOf(scanner.next());
+                    personList = searchByName(firstName);
+                    System.out.print("Enter new first name : ");
                     firstName = String.valueOf(scanner.next());
-                    personList.get(id).setFirstName(firstName);
+                    personList.get(0).setFirstName(firstName);
                     break;
+
                 case 2:
-                    System.out.print("Enter new lastname : ");
+                    System.out.print("Enter old lastName : ");
+                    String lastName = String.valueOf(scanner.next());
+                    personList = searchByLastName(lastName);
+                    System.out.print("Enter new lastName : ");
                     lastName = String.valueOf(scanner.next());
-                    personList.get(id).setLastName(lastName);
+                    personList.get(0).setLastName(lastName);
                     break;
+
                 case 3:
+                    System.out.print("Enter old address : ");
+                    String address = String.valueOf(scanner.next());
+                    personList = searchByAddress(address);
                     System.out.print("Enter new address : ");
                     address = String.valueOf(scanner.next());
-                    personList.get(id).setAddress(address);
+                    personList.get(0).setAddress(address);
                     break;
+
                 case 4:
+                    System.out.print("Enter old city : ");
+                    String city = String.valueOf(scanner.next());
+                    personList = searchByCity(city);
                     System.out.print("Enter new city : ");
                     city = String.valueOf(scanner.next());
-                    personList.get(id).setCity(city);
+                    personList.get(0).setCity(city);
                     break;
+
                 case 5:
+                    System.out.print("Enter old state : ");
+                    String state = String.valueOf(scanner.next());
+                    personList = searchByState(state);
                     System.out.print("Enter new state : ");
-                    state = String.valueOf(scanner.next());
-                    personList.get(id).setState(state);
+                    city = String.valueOf(scanner.next());
+                    personList.get(0).setCity(state);
                     break;
+
                 case 6:
+
+                    System.out.print("Enter old zip : ");
+                    String zip = String.valueOf(scanner.next());
+                    personList = searchByZip(zip);
                     System.out.print("Enter new zip : ");
                     zip = String.valueOf(scanner.next());
-                    personList.get(id).setZip(zip);
+                    personList.get(0).setCity(zip);
                     break;
+
                 case 7:
+                    System.out.print("Enter old phoneNum : ");
+                    String phoneNum = String.valueOf(scanner.next());
+                    personList = searchByPhoneNum(phoneNum);
                     System.out.print("Enter new phoneNum : ");
                     phoneNum = String.valueOf(scanner.next());
-                    personList.get(id).setPhoneNum(phoneNum);
+                    personList.get(0).setCity(phoneNum);
                     break;
+
                 case 8:
+
+                    System.out.print("Enter old email : ");
+                    String email = String.valueOf(scanner.next());
+                    personList = searchByEmail(email);
                     System.out.print("Enter new email : ");
                     email = String.valueOf(scanner.next());
-                    personList.get(id).setEmail(email);
+                    personList.get(0).setCity(email);
                     break;
+
                 case 9:
                     i = 1;
                     break;
@@ -121,17 +150,17 @@ public class Contacts {
                     System.out.println("select valid option");
                     break;
             }
-            System.out.println(personList.get(id));
         }
     }
 
-    public void deleteDetails() {
-        int id;
-        for (Person p : personList) {
-            System.out.println("ID: #" + personList.indexOf(p) + " : " + p);
-            System.out.println("\nEnter #ID to delete contact : ");
-            id = Integer.valueOf(scanner.next());
-            personList.remove(id);
+    public void deleteDetails(String firstname) {
+        String deleteName;
+        for (Person contact : personList) {
+            deleteName = contact.getFirstName();
+            System.out.println(deleteName);
+            if (firstname.equalsIgnoreCase(deleteName)) {
+                personList.remove(contact);
+            }
         }
     }
 
@@ -150,21 +179,54 @@ public class Contacts {
     }
 
     //Search by name
-    public void searchByName(String firstName) {
+    public List<Person> searchByName(String firstName) {
         List<Person> streamList = personList.stream().filter(person -> firstName.equals(person.getFirstName())).collect(Collectors.toList());
         System.out.println("Persons details : " + streamList);
+        return streamList;
+    }
+
+    public List<Person> searchByLastName(String lastName) {
+        List<Person> streamList = personList.stream().filter(person -> lastName.equals(person.getLastName())).collect(Collectors.toList());
+        System.out.println("Persons details : " + streamList);
+        return streamList;
     }
 
     //Search by searchByCity
-    public void searchByCity(String city) {
+    public List<Person> searchByCity(String city) {
         List<Person> streamList = personList.stream().filter(person -> city.equals(person.getCity())).collect(Collectors.toList());
         System.out.println("Persons in city : " + streamList);
+        return streamList;
     }
 
     //Search by searchByState
-    public void searchByState(String state) {
+    public List<Person> searchByState(String state) {
         List<Person> streamList = personList.stream().filter(person -> state.equals(person.getState())).collect(Collectors.toList());
         System.out.println("Person in state : " + streamList);
+        return streamList;
+    }
+
+    public List<Person> searchByZip(String zip) {
+        List<Person> streamList = personList.stream().filter(person -> zip.equals(person.getAddress())).collect(Collectors.toList());
+        System.out.println("Persons details : " + streamList);
+        return streamList;
+    }
+
+    public List<Person> searchByPhoneNum(String phoneNum) {
+        List<Person> streamList = personList.stream().filter(person -> phoneNum.equals(person.getAddress())).collect(Collectors.toList());
+        System.out.println("Persons details : " + streamList);
+        return streamList;
+    }
+
+    public List<Person> searchByEmail(String email) {
+        List<Person> streamList = personList.stream().filter(person -> email.equals(person.getAddress())).collect(Collectors.toList());
+        System.out.println("Persons details : " + streamList);
+        return streamList;
+    }
+
+    public List<Person> searchByAddress(String address) {
+        List<Person> streamList = personList.stream().filter(person -> address.equals(person.getAddress())).collect(Collectors.toList());
+        System.out.println("Persons details : " + streamList);
+        return streamList;
     }
 
     public void viewByCity(String city1) {

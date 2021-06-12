@@ -37,7 +37,9 @@ public class AddressBookMain {
                     contacts.editDetails();
                     break;
                 case 4:
-                    contacts.deleteDetails();
+                    System.out.println("Enter a name to delete");
+                    String firstName1 = scanner.next();
+                    contacts.deleteDetails(firstName1);
                 case 5:
                     String firstName = scanner.next();
                     contacts.searchByName(firstName);
