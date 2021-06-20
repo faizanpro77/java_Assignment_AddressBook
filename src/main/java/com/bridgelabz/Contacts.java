@@ -40,6 +40,26 @@ public class Contacts {
         personList.add(new Person(firstName, lastName, address, city, state, zip, phoneNum, email));
     }
 
+    public static void sortByName(List<Person> person) {
+        person.sort(Person.firstNameSorting);
+        person.forEach(System.out::println);
+    }
+
+    public static void sortByCity(List<Person> peron) {
+        peron.sort(Person.citySorting);
+        peron.forEach(System.out::println);
+    }
+
+    public static void sortByState(List<Person> person) {
+        person.sort(Person.stateSorting);
+        person.forEach(System.out::println);
+    }
+
+    public static void sortByZip(List<Person> person) {
+        person.sort(Person.zipSorting);
+        person.forEach(System.out::println);
+    }
+
     public void displayDetails() {
         if (personList.isEmpty()) {
             System.out.println("No records");
@@ -270,10 +290,16 @@ public class Contacts {
         int choice = scanner.nextInt();
         switch (choice) {
             case 1:
-                Sort.sortByName(personList);
+                sortByName(personList);
                 break;
             case 2:
-                Sort.sortByCity(personList);
+                sortByCity(personList);
+                break;
+            case 3:
+                sortByState(personList);
+                break;
+            case 4:
+                sortByZip(personList);
                 break;
             default:
                 System.out.println("select valid option");
