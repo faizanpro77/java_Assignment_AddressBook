@@ -1,11 +1,12 @@
 package com.bridgelabz;
 
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
 
 public class AddressBookMain {
-
+    Scanner scanner = new Scanner(System.in);
     public  void addressBookServices(Contacts contacts) {
         Scanner scanner = new Scanner(System.in);
         int choice, i = 0;
@@ -79,8 +80,8 @@ public class AddressBookMain {
             }
         }
     }
-    public static void main(String[] args) {
 
+    public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Welcome to Address Book Program");
         Map<String, Contacts> addressBookMap = new HashMap<String, Contacts>();
@@ -95,11 +96,36 @@ public class AddressBookMain {
             }
         AddressBookMain addressBook = new AddressBookMain();
         addressBook.addressBookServices(contacts);
-            System.out.println("press 1 : want to enter in other addressBook");
+            addressBook.addressBookJson();
+                System.out.println("press 1 : want to enter in other addressBook");
             System.out.println("press other key to exit");
             String choice = scanner.nextLine();
             if(!choice.equals("1"))
                 break;
+        }
+    }
+
+    public void addressBookJson() {
+        System.out.println("1. Write data into json");
+        System.out.println("2. Read data from json");
+        int choice1 = scanner.nextInt();
+        switch (choice1) {
+            case 1:
+                try {
+                    AddressBookJSON.writeDataToJSon();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+                break;
+            case 2:
+                try {
+                    AddressBookJSON.readDataFromJson();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+                break;
+            default:
+                System.out.println("invalid");
         }
     }
 }

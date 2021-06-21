@@ -112,9 +112,6 @@ public class Person {
         return zip1.compareToIgnoreCase(zip2);
     };
 
-
-
-
     @Override
     public String toString() {
         return "Contact{" +

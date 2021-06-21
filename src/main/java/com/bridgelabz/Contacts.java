@@ -6,8 +6,7 @@ import java.util.stream.Collectors;
 public class Contacts {
 
     Scanner scanner = new Scanner(System.in);
-    List<Person> personList = new ArrayList<Person>();
-
+    public static final List<Person> personList = new ArrayList<>();
     public void addDetails() {
         String firstName = null, lastName, address, city, state, zip, phoneNum, email;
         int i = 0;
